@@ -24,6 +24,16 @@ void insertFront(node* &head,int value){
     return;
 }
 
+// insert begine
+void insertBegine(node* &head, int value){
+    //create node
+    node* temp=new node(value);
+    temp->next=head;
+    head=temp;
+
+    return;
+}
+
 // linked list node print
 void print(node* &head){
     node* temp=head;
@@ -45,6 +55,11 @@ int main(){
     insertFront(head,4);
     insertFront(head,5);
     //print linked list
+    print(head);
+
+    //insert begin
+    insertBegine(head,6);
+    insertBegine(head,7);
     print(head);
 
     return 0;
