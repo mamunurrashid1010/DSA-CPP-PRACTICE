@@ -52,6 +52,27 @@ void insert_nth_position(node* &head, int value, int position){
 
 }
 
+// delete node
+void deleteNode(node* &head,int value){
+    if(head==NULL){
+        return;
+    }
+    node* temp=head;
+
+    while(temp!=NULL){
+        if(temp->next->data==value){
+            node* toDelete=temp->next;
+            temp->next=temp->next->next;
+            delete toDelete;
+            return;
+        }
+        temp=temp->next;
+    }
+
+    return;
+}
+
+
 // linked list node print
 void print(node* &head){
     node* temp=head;
@@ -87,6 +108,12 @@ int main(){
     //insert nth position
     cout<<"Insert 8 in 3rd position"<<endl;
     insert_nth_position(head,8,3);
+    print(head);
+    cout<<endl;
+
+    //delete node
+    cout<<"Delete node where value 4"<<endl;
+    deleteNode(head,4);
     print(head);
 
     return 0;
