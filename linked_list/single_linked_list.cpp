@@ -34,6 +34,24 @@ void insertBegine(node* &head, int value){
     return;
 }
 
+// insert nth position
+void insert_nth_position(node* &head, int value, int position){
+    //create new node
+    node* temp=new node(value);
+    node* temp2=head;
+    int p=1;
+    while(temp2!=NULL){
+        if(p+1 ==position){
+            temp->next=temp2->next;
+            temp2->next=temp;
+        }
+        p++;
+        temp2=temp2->next;
+    }
+    return;
+
+}
+
 // linked list node print
 void print(node* &head){
     node* temp=head;
@@ -49,6 +67,7 @@ void print(node* &head){
 int main(){
     node* head=NULL;
     // insert front
+    cout<<"Insert front 1,2,3,4,5"<<endl;
     insertFront(head,1);
     insertFront(head,2);
     insertFront(head,3);
@@ -56,10 +75,18 @@ int main(){
     insertFront(head,5);
     //print linked list
     print(head);
+    cout<<endl;
 
     //insert begin
+    cout<<"Insert begin 6,7"<<endl;
     insertBegine(head,6);
     insertBegine(head,7);
+    print(head);
+    cout<<endl;
+
+    //insert nth position
+    cout<<"Insert 8 in 3rd position"<<endl;
+    insert_nth_position(head,8,3);
     print(head);
 
     return 0;
