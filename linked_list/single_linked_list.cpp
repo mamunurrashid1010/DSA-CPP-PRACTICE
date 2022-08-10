@@ -73,6 +73,23 @@ void deleteNode(node* &head,int value){
 }
 
 
+// reverse link list
+node* reverseNode(node* &head){
+    node* previousPtr=NULL;
+    node* currentPtr=head;
+    node* nextPtr;
+    while(currentPtr!=NULL){
+        nextPtr=currentPtr->next;
+        currentPtr->next=previousPtr;
+
+        previousPtr=currentPtr;
+        currentPtr=nextPtr;
+    }
+    //head=previousPtr;
+    return previousPtr;
+
+}
+
 // linked list node print
 void print(node* &head){
     node* temp=head;
@@ -115,6 +132,12 @@ int main(){
     cout<<"Delete node where value 4"<<endl;
     deleteNode(head,4);
     print(head);
+    cout<<endl;
+
+    //reverse node
+    cout<<"Reverse node"<<endl;
+    node* newHead=reverseNode(head);
+    print(newHead);
 
     return 0;
 }
