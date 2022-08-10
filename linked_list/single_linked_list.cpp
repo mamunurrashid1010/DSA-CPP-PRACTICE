@@ -72,6 +72,32 @@ void deleteNode(node* &head,int value){
     return;
 }
 
+//delete node index wise
+node* deleteNode_indexWise(node* &head,int x)
+{
+     if(head == NULL)
+        return NULL;
+
+     if(x == 1)
+     {
+         head = head->next;
+         return head;
+     }
+     else
+     {
+         node *temp = head;
+         int count = 2;
+         while(count < x)
+        {
+              temp = temp->next;
+              count++;
+        }
+         temp->next = temp->next->next;
+     }
+
+    return head;
+}
+
 
 // reverse link list
 node* reverseNode(node* &head){
@@ -128,10 +154,16 @@ int main(){
     print(head);
     cout<<endl;
 
-    //delete node
+    //delete node value wise
     cout<<"Delete node where value 4"<<endl;
     deleteNode(head,4);
     print(head);
+    cout<<endl;
+
+    //delete node index wise
+    cout<<"Delete 3rd position node"<<endl;
+    node* newHead1=deleteNode_indexWise(head,3);
+    print(newHead1);
     cout<<endl;
 
     //reverse node
