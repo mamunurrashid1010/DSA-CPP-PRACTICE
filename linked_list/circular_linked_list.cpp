@@ -57,6 +57,42 @@ void insertAtTail(node* &head,int value){
 
 }
 
+//delete first node
+void deleteFirstNode(node* &head){
+
+        node* temp=head;
+        while(temp->next!=head){
+            temp=temp->next;
+        }
+        node* toDelete=temp->next;
+        temp->next=head->next;
+        head=head->next;
+        delete toDelete;
+        return;
+
+}
+
+//delete node 1 based index
+void deleteNode(node* &head, int pos){
+    if(pos==1){
+        deleteFirstNode(head);
+        return;
+    }
+    node* temp=head;
+    int counter=2;
+    while(counter<pos){
+        counter++;
+        temp=temp->next;
+    }
+    node* toDelete=temp->next;
+    temp->next=temp->next->next;
+    delete toDelete;
+    return;
+
+}
+
+
+
 //print node
 void display(node* &head){
 
@@ -86,6 +122,16 @@ int main(){
     insertAtTail(head,4);
     display(head);
 
+    //delete linked list 1 based index
+    cout<<"delete 3rd node:"<<endl;
+    deleteNode(head,3);
+    display(head);
+    cout<<"delete 1st node:"<<endl;
+    deleteNode(head,1);
+    display(head);
+    cout<<"delete last node:"<<endl;
+    deleteNode(head,5);
+    display(head);
     return 0;
 }
 
